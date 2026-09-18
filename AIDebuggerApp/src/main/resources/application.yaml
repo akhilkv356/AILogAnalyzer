@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: ai-debugger
+
+  datasource:
+    url: ${DB_URL:jdbc:sqlserver://ilb-3790team11sqlserver.database.windows.net:1433;databaseName=ilb-3790team11db;encrypt=true;trustServerCertificate=false}
+    username: ${DB_USERNAME:team11admin}
+    password: ${DB_PASSWORD:GCCHackathon2026}
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: ${SERVER_PORT:8081}
+  error:
+    include-message: never
+    include-stacktrace: never
+
+ai:
+  enabled: ${AI_ENABLED:true}
+  responses-url: ${AI_RESPONSES_URL:https://ilb-3790-team11aifoundry.services.ai.azure.com/openai/v1/responses}
+  model: ${AI_MODEL:gpt-6-astra}
+  api-key: ${AI_API_KEY:CJUgOBFQeSIExHyikdz7XGeKVY3Dqyzdl47480HQAL6l2v11cgYKJQQJ99CIACHYHv6XJ3w3AAAAACOGmlCx}
+  connect-timeout-seconds: ${AI_CONNECT_TIMEOUT_SECONDS:10}
+  read-timeout-seconds: ${AI_READ_TIMEOUT_SECONDS:120}
+  max-input-chars: ${AI_MAX_INPUT_CHARS:16000}
+  max-output-tokens: ${AI_MAX_OUTPUT_TOKENS:4000}
